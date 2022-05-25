@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,7 +28,6 @@ public class MealPlanServiceImpl implements MealPlanService {
     public List<MealPlan> getAllMealPlans(Long userId){
         return mealPlanRepository.getAllMealPlans(userId);
     }
-    public MealPlan createMealPlan(Long mealid, Long userId, LocalDateTime date){
 
     @Override
     public List<MealPlan> createMealPlan(List<Long> meals, Long userId, LocalDateTime date) {

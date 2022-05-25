@@ -33,16 +33,16 @@ LIMIT 0, 1000
 
 -- Date: 2022-05-21 14:53
 */
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (1,'Lacto-Vegetarian',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (2,'Vegan',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (3,'Vegetarian',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (4,'Ketogenic',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (5,'Ovo-Vegetarian',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (6,'Pescetarian',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (7,'Paleo',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (8,'Primal',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (9,'Whole30',NULL,NULL);
-INSERT INTO diet (`id`,`name`,`exclude`,`photo`) VALUES (10,'Lactose-free','10',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (1,'Lacto-Vegetarian',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (2,'Vegan',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (3,'Vegetarian',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (4,'Ketogenic',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (5,'Ovo-Vegetarian',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (6,'Pescetarian',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (7,'Paleo',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (8,'Primal',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (9,'Whole30',NULL);
+INSERT INTO diet (`id`,`name`,`photo`) VALUES (10,'Lactose-free',NULL);
 
 /*
 -- Query: SELECT * FROM healthyfoodapi_database.ingredient

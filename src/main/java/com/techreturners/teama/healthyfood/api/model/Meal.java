@@ -87,29 +87,4 @@ public class Meal {
 
     @Column
     LocalTime end;
-
-    @ManyToMany
-    @JoinTable(
-            name = "meal_category_as",
-            joinColumns = {@JoinColumn(name = "meal_id", referencedColumnName = "id")},
-            inverseJoinColumns ={@JoinColumn(name = "category_id", referencedColumnName = "id")}
-    )
-    List<Category> categories;
-    @ManyToMany
-    @JoinTable(
-            name = "meal_diet_as",
-            joinColumns = {@JoinColumn(name = "meal_id", referencedColumnName = "id")},
-            inverseJoinColumns ={@JoinColumn(name = "diet_id", referencedColumnName = "id")}
-    )
-    List<Diet> diets;
-
-    @ManyToMany
-    @JoinTable(
-            name = "meal_ingredient_as",
-            joinColumns = {@JoinColumn(name = "meal_id", referencedColumnName = "id")},
-            inverseJoinColumns ={@JoinColumn(name = "ingredient_id", referencedColumnName = "id")}
-    )
-    List<Ingredient> ingredients;
-
-
 }

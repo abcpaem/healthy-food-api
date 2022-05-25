@@ -25,9 +25,6 @@ public class Diet {
     @Column
     String name;
 
-//    @Column
-//    String exclude;
-
     @Column
     String photo;
 }
