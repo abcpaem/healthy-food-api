@@ -9,7 +9,7 @@ public interface MealPlanService {
 
     List<MealPlan> getAllMealPlans(Long userId);
 
-    MealPlan createMealPlan(Long mealid, Long userId, LocalDateTime date);
+    List<MealPlan> createMealPlan(List<Long> meals, Long userId, LocalDateTime date);
 
     MealPlan getMealPlanById(Long id);
 

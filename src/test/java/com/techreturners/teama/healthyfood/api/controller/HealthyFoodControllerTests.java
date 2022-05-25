@@ -44,7 +44,7 @@ public class HealthyFoodControllerTests {
     private MockMvc mockMvcController;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         mockMvcController = MockMvcBuilders.standaloneSetup(healthyFoodController).build();
     }
 
@@ -52,8 +52,8 @@ public class HealthyFoodControllerTests {
     public void testGetAllIngredients() throws Exception {
 
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(new Ingredient(1L, "Ingredient1", 100, 10, 10, 10, "photo1", 1, 100,"g", "3,4", 5));
-        ingredients.add(new Ingredient(2L, "Ingredient2", 200, 20, 20, 20, "photo2", 0,100,"g", "5,7", 6));
+        ingredients.add(new Ingredient(1L, "Ingredient1", 100, 10, 10, 10, 10, "photo1", 1, 0, "1", "3,4", 5L));
+        ingredients.add(new Ingredient(2L, "Ingredient2", 200, 20, 20, 20, 10, "photo2", 0, 1, "1", "5,7", 6L));
 
         when(healthyFoodManagerService.getAllIngredients()).thenReturn(ingredients);
 
@@ -103,27 +103,27 @@ public class HealthyFoodControllerTests {
     public void testGetMeals() throws Exception {
 
         int calories = 1000;
-        List<Long> excludedIngredients = Arrays.asList(1L,2L);
-        List<Long> dietList = Arrays.asList(1L, 2L);
-        List<Long> category = Arrays.asList(1L, 2L);
+        List<Long> excludedIngredientsLong = Arrays.asList(1L, 2L);
+        List<Long> includedDietsLong = Arrays.asList(1L, 2L);
+        List<Long> includedCategoriesLong = Arrays.asList(1L, 2L);
         List<Meal> meals = new ArrayList<>();
         List<Ingredient> ingredients = new ArrayList<>();
-        List<Diet> diets =new ArrayList<>();
+        List<Diet> diets = new ArrayList<>();
         List<Category> categories = new ArrayList<>();
-        meals.add(new Meal(1L, "Meal1", "ShortDesc1", "LongDesc1", "Category1", 10, 10, 2000 ,"1,3","Diet1", "Photo1", "Url1", LocalDateTime.now(),LocalTime.now(), LocalTime.now().plusHours(10), categories, diets, ingredients));
-        meals.add(new Meal(2L, "Meal2", "ShortDesc2", "LongDesc2", "Category2", 20, 20, 1500,"5,6", "Diet2", "Photo2", "Url2", LocalDateTime.now(),LocalTime.now(), LocalTime.now().plusHours(10), categories, diets, ingredients));
+        meals.add(new Meal(1L, "Meal1", "ShortDesc1", "LongDesc1", categories, "Category1", 10, 10, 2000, ingredients, "1,3", diets, "Diet1", "Photo1", "Url1", LocalDateTime.now(), LocalTime.now(), LocalTime.now().plusHours(10)));
+        meals.add(new Meal(2L, "Meal2", "ShortDesc2", "LongDesc2", categories, "Category2", 20, 20, 1500, ingredients, "5,6", diets, "Diet2", "Photo2", "Url2", LocalDateTime.now(), LocalTime.now(), LocalTime.now().plusHours(10)));
 
-        when(healthyFoodManagerService.getMeals(calories, excludedIngredients, dietList, category)).thenReturn(meals);
+        when(healthyFoodManagerService.getMeals(calories, excludedIngredientsLong, includedDietsLong, includedCategoriesLong)).thenReturn(meals);
 
         this.mockMvcController.perform(
                         MockMvcRequestBuilders.get("/api/v1/meal/")
                                 .param("calories", String.valueOf(calories))
-                                .param("excludedIngredients", StringUtils.join(excludedIngredients, ','))
-                                .param("diets", StringUtils.join( dietList,","))
-                                .param("category", StringUtils.join(category,",")))
+                                .param("excludedIngredients", StringUtils.join(excludedIngredientsLong, ','))
+                                .param("diets",  StringUtils.join(includedDietsLong, ','))
+                                .param("categories", StringUtils.join(includedCategoriesLong, ',')))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(jsonPath("$.*", hasSize(2)));
 
-        verify(healthyFoodManagerService, times(1)).getMeals(calories, excludedIngredients, dietList, category);
+        verify(healthyFoodManagerService, times(1)).getMeals(calories, excludedIngredientsLong, includedDietsLong, includedCategoriesLong);
     }
 }

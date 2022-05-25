@@ -1,6 +1,5 @@
 package com.techreturners.teama.healthyfood.api.service;
 
-import com.techreturners.teama.healthyfood.api.model.Meal;
 import com.techreturners.teama.healthyfood.api.model.MealPlan;
 import com.techreturners.teama.healthyfood.api.model.User;
 import com.techreturners.teama.healthyfood.api.repository.MealPlanRepository;
@@ -30,16 +29,20 @@ public class MealPlanServiceImpl implements MealPlanService {
     }
     public MealPlan createMealPlan(Long mealid, Long userId, LocalDateTime date){
 
-        User user = userRepository.findById(userId).orElse(null);
-        if (user ==null){ throw new IllegalArgumentException();}
-        Meal meal = mealRepository.findById(mealid).orElse(null);
-        if (meal == null){ throw  new IllegalArgumentException();}
-        MealPlan mealPlan = new MealPlan();
-        mealPlan.setUser(user);
-        mealPlan.setMeal(meal);
-        mealPlan.setDate(date);
-        mealPlanRepository.save(mealPlan);
-        return mealPlan;
+    @Override
+    public List<MealPlan> createMealPlan(List<Long> meals, Long userId, LocalDateTime date) {
+        List<MealPlan> mealPlansList = new ArrayList<>();
+        User user = userRepository.findById(userId).get();
+        for (Long mealId : meals) {
+            MealPlan mealPlan = new MealPlan();
+            mealPlan.setUser(user);
+            mealPlan.setMeal(mealRepository.findById(mealId).get());
+            mealPlan.setDate(date);
+
+            mealPlanRepository.save(mealPlan);
+            mealPlansList.add(mealPlan);
+        }
+        return mealPlansList;
     }
 
     @Override

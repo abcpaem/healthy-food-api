@@ -1,9 +1,6 @@
 package com.techreturners.teama.healthyfood.api.service;
 
-import com.techreturners.teama.healthyfood.api.model.Category;
-import com.techreturners.teama.healthyfood.api.model.Diet;
-import com.techreturners.teama.healthyfood.api.model.Ingredient;
-import com.techreturners.teama.healthyfood.api.model.Meal;
+import com.techreturners.teama.healthyfood.api.model.*;
 import com.techreturners.teama.healthyfood.api.repository.CategoryRepository;
 import com.techreturners.teama.healthyfood.api.repository.DietRepository;
 import com.techreturners.teama.healthyfood.api.repository.IngredientRepository;
@@ -42,7 +39,7 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
     }
 
     @Override
-    public List<Ingredient> getAllIngredients(){
+    public List<Ingredient> getAllIngredients() {
         List<Ingredient> ingredients = new ArrayList<>();
         ingredientRepository.findAll().forEach(ingredients::add);
         return ingredients;
@@ -60,9 +57,9 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     @Override
     public List<Diet> getAllDiets() {
-        List<Diet> diet = new ArrayList<>();
-        dietRepository.findAll().forEach(diet::add);
-        return diet;
+        List<Diet> diets = new ArrayList<>();
+        dietRepository.findAll().forEach(diets::add);
+        return diets;
     }
 
     @Override
@@ -78,9 +75,9 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     @Override
     public List<Category> getAllCategories() {
-        List<Category> category = new ArrayList<>();
-        categoryRepository.findAll().forEach(category::add);
-        return category;
+        List<Category> categories = new ArrayList<>();
+        categoryRepository.findAll().forEach(categories::add);
+        return categories;
     }
 
     @Override
@@ -95,9 +92,9 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     @Override
     public List<Meal> getAllMeals() {
-        List<Meal> meal = new ArrayList<>();
-        mealRepository.findAll().forEach(meal::add);
-        return meal;
+        List<Meal> meals = new ArrayList<>();
+        mealRepository.findAll().forEach(meals::add);
+        return meals;
     }
 
     @Override

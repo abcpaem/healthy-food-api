@@ -10,14 +10,13 @@ import java.util.List;
 
 @Repository
 public interface MealRepository extends CrudRepository<Meal, Long> {
-
-    @Query(value ="SELECT DISTINCT m.* FROM meal m " +
-            "LEFT JOIN meal_diet_as md ON m.id = md.meal_id " +
-            "LEFT JOIN meal_category_as mc ON m.id = mc.meal_id " +
+    @Query(value = "SELECT DISTINCT m.* FROM meal m " +
+            "LEFT JOIN meal_diet md ON m.id = md.meal_id " +
+            "LEFT JOIN meal_category mc ON m.id = mc.meal_id " +
             "WHERE (:calories IS NULL OR m.calories <= :calories) " +
-            "AND (m.id NOT IN (SELECT DISTINCT meal_id FROM meal_ingredient_as WHERE ingredient_id IN :excludedIngredients)) " +
+            "AND (m.id NOT IN (SELECT DISTINCT meal_id FROM meal_ingredient WHERE ingredient_id IN :excludedIngredients))" +
             "AND (:dietsIsNull IS TRUE OR md.diet_id IN :diets) " +
-            "AND (:categoriesIsNull IS TRUE OR mc.category_id IN :categories) "+
+            "AND (:categoriesIsNull IS TRUE OR mc.category_id IN :categories) " +
             "LIMIT :maxResults", nativeQuery = true)
     List<Meal> getMeals(
             @Param(value = "calories") Integer calories,

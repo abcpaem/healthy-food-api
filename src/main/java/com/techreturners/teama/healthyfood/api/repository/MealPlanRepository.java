@@ -12,5 +12,4 @@ import java.util.List;
 public interface MealPlanRepository extends CrudRepository<MealPlan, Long> {
     @Query(value = "SELECT * FROM meal_plan where user_id = :userid ", nativeQuery = true)
     List<MealPlan> getAllMealPlans(@Param(value = "userid") Long userid);
-
 }

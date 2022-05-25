@@ -38,6 +38,9 @@ public class Ingredient {
     int protein;
 
     @Column
+    int fibre;
+
+    @Column
     String photo;
 
     @Column
@@ -52,7 +55,7 @@ public class Ingredient {
     @Column
     String category;
 
-    @Column
-    int catid;
+    @Column(name = "catid")
+    Long categoryid;
 
 }
