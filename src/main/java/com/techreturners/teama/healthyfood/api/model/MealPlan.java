@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @Builder
 public class MealPlan {
     @Id
-    @GeneratedValue
-    @Column(updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long id;
 
     @ManyToOne

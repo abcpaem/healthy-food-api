@@ -5,29 +5,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class Diet {
+@IdClass(MealIngredientsAsId.class)
+public class MealIngredientsAs {
     @Id
     @GeneratedValue
     @Column(updatable = false, nullable = false)
-    Long id;
+    Integer id;
+
+    @Column(name = "meal_id")
+    Long mealId;
+
+    @Column (name = "ingredient_id")
+    Long ingredientId;
 
     @Column
-    String name;
-
-//    @Column
-//    String exclude;
-
-    @Column
-    String photo;
+    int quantity;
 }

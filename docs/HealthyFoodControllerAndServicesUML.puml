@@ -1,148 +1,177 @@
 @startuml
 package "com.techreturners.teama.healthyfood.api" {
 
-    HealthyFoodController --> UserService
-    HealthyFoodController --> IngredientsService
-    HealthyFoodController --> DietService
-    HealthyFoodController --> MealService
-    HealthyFoodController --> MealPlanService
-    HealthyFoodController --> CategoryService
-    UserService --> UserRepository
-    IngredientsService --> IngredientsRepository
-    DietService --> DietRepository
-    MealService --> MealRepository
-    MealPlanService --> MealPlanRepository
-    MealIngredientsAsService --> MealIngredientsAsRepository
-    CategoryService --> CategoryRepository
+    HealthyFoodController --> HealthyFoodService
+    HealthyFoodService --> HealthFoodServiceImpl
+    HealthFoodServiceImpl--> DietRepository
+    HealthFoodServiceImpl--> IngredientsRepository
+    HealthFoodServiceImpl--> CategoryRepository
+    HealthFoodServiceImpl --> MealRepository
+
+    DietRepository --> Diet
+    CategoryRepository --> Category
+    MealRepository --> Meal
+    MealRepository --> MealIngredientAs
+    IngredientsRepository --> Ingredients
+
+    MealPlanController --> MealPlanService
+    MealPlanService --> MealPlanServiceImpl
+    MealPlanServiceImpl --> MealPlanRepository
+    MealPlanRepository --> MealPlan
+
+    UserController --> UserService
+    UserService --> UserServiceImpl
+    UserServiceImpl --> UserRepository
     UserRepository <-- User
-    IngredientsRepository <-- Ingredients
-    DietRepository <-- Diet
-    MealRepository <-- Meal
-    MealPlanRepository <-- MealPlan
-    CategoryRepository <-- Category
-    MealIngredientsAsRepository <-- MealIngredientAs
+
 
     Class HealthyFoodController{
+
+        @Autowired
+        healthyFoodManagerService : HealthyFoodService;
+        getAllIngredients() : ResponseEntity
+        getAllDiets() : ResponseEntity
+        getAllCategories() : ResponseEntity
+        getMeals(int calories, String excludedIngredients, String diet, String category) : ResponseEntity
+    }
+
+    Class MealPlanController{
+        getMealPlan(Long userId) : ResponseEntity
+        createMealPlan(mealid:Long, userId:Long, dateadded:LocalDateTime ) :ResponseEntity
+
+    }
+    Class UserController{
+        @Autowired
+        userService : UserService
+
+        getUserById(userId:Long):ResponseEntity
+        addUser(user: User) ResponseEntity
+        updateUserById( userId : Long, user :User) ResponseEntity
+         deleteUserById(userId : Long) ResponseEntity
+    }
+
+    Interface HealthyFoodService{
+        getAllIngredients() : ResponseEntity
+        getAllDiets() : ResponseEntity
+        getAllCategories() : ResponseEntity
+        getMeals(calories:Integer, excludedIngredients:List<Long>,  diets:List<Long>, category:List<Long>) : ResponseEntity
+
+    }
+    Interface MealPlanService{
+        getAllMealPlans(userId:Long) : List<MealPlan>
+            createMealPlan(mealid:Long, userId:Long, date:LocalDateTime) :MealPlan
+    }
+    Class HealthFoodServiceImpl {
+        @Autowired
+        MealRepository mealRepository;
+        UserRepository userRepository;
+        MealPlanRepository mealPlanRepository;
 
         public getAllIngredients()
         public getAllDiets()
         public getAllCategories()
-        public getMeals(int calories, String excludedIngredients, String diet, String category)
-        public getMealPlan(Long userId)
-        public createMealPlan(Long mealid, Long userId, LocalDateTime dateadded)
-        public createMealPlan(List<MealPlan> mealplan)
-    }
-    interface DietService {
-        List<Diet> getAllDiets()
-        Diet getDietById(Long id)
-    }
-    interface CategoryService {
-        List<Category> getAllCategories()
-        Category getCategoryById(Long id)
-    }
-    interface IngredientsService {
-
-        List<Ingredients> getAllIngredients()
-        Ingredients getIngredientById(Long id)
+        public getMeals(Integer calories, List<Long> excludedIngredients, List<Long> diets, List<Long> category)
     }
 
-    interface MealPlanService {
+    Class MealPlanServiceImpl{
+        @Autowired
+        mealRepository:MealRepository
+        userRepository:UserRepository
+        mealPlanRepository:MealPlanRepository
 
-        List<MealPlan> getAllMealPlans()
-        MealPlan getMealPlanById(Long id)
-        MealPlan insertIntoMealPlan(MealPlan mealPlan)
-        void updateMealPlanById(Long id)
-        void deleteMealPlanById(Long id)
-    }
-    interface MealIngredientsAsService {
-
-        List<MealIngredientAs> getAllMealIngredientAs()
-        MealIngredientAs getMealIngredientAsById(Long id)
+        getAllMealPlans(userId:Long) : List<MealPlan>
+        createMealPlan(mealid:Long, userId:Long, date:LocalDateTime) :MealPlan
     }
 
-    interface MealService {
-        List<Meal> getAllMeals()
-        Meal getMealById(Long id)
+    Interface UserService {
+        getAllUsers() :List<User>
+        getUserById(id : Long) : User
+        insertIntoUser(user:User) :User
+        deleteUserById(id : Long) : void
+        updateUserById(id : Long) : void
+    }
+    Class UserServiceImpl{
+    @Autowired
+        UserRepository userRepository;
+
+        getAllUsers() : List<User>
+        getUserById(id:Long) :User
+        insertIntoUser(user: User): User
+        deleteUserById(id : Long) : void
+        updateUserById(id : Long) : void
     }
 
-    interface UserService {
-        List<User> getAllUsers()
-        User getUserById(Long id)
-        User insertIntoUser(User user)
-        void deleteUserById(Long id)
-        void updateUserById(Long id)
+    Class User {
+        id : Long
+        email:String
+        firstname : String
+        lastname: String
+        dietid : String
+        exclude : String
+        dateadded : LocalDateTime
     }
 
-    class User {
-        Long id
-            String email;
-            String firstname;
-            String lastname;
-            String dietid;
-            String exclude;
-            LocalDateTime dateadded;
+    Class Ingredients{
+        id :Long
+        name : String
+        calories :int
+        carbohydrates: int
+        fat : int
+        protein : int
+        photo :String
     }
 
-    class Ingredients{
-        Long id;
-        String name;
-        int calories;
-        int carbohydrates;
-        int fat;
-        int protein;
-        String photo;
+    Class MealIngredientAs{
+        id : Long
+        mealid : int
+        ngredeintid : int
+        quantity : int
     }
 
-    class MealIngredientAs{
-        Long id;
-        int mealid;
-        int ingredeintid;
-        int quantity;
+    Class Diet{
+        id : Long
+        name : String
+        photo: String
     }
 
-    class Diet{
-        Long id;
-        String name;
+    Class Meal{
+        id : Long
+        name : String
+        shortdesc : String
+        longdesc : String
+        category : String
+        preptime : int
+         serving: int
+         diet :String
+         photo : String
+         url : String
+         dateadded : LocalDateTime
     }
 
-    class Meal{
-        Long id;
-        String name;
-        String shortdesc;
-        String longdesc;
-        String category;
-        int preptime;
-        int servings;
-        String diet;
-        String photo;
-        String url;
-        LocalDateTime dateadded;
+    Class Category{
+        id :Long
+        name : String
     }
 
-    class Category{
-        Long id;
-        String name;
+    Class MealPlan{
+        id : Long
+        userid : int
+        mealid : int
+         date : LocalDateTime
     }
-
-    class MealPlan{
-        Long id;
-        int userid;
-        int mealid;
-        LocalDateTime date;
+    Interface UserRepository{
     }
-    interface UserRepository{
+    Interface CategoryRepository{
     }
-    interface CategoryRepository{
+    Interface IngredientsRepository{
     }
-    interface IngredientsRepository{
+    Interface DietRepository{
     }
-    interface DietRepository{
+    Interface MealPlanRepository{
     }
-    interface MealPlanRepository{
+    Interface MealRepository{
     }
-    interface MealRepository{
-    }
-    interface MealIngredientAs{
+    Interface MealIngredientAs{
     }
 }
 @enduml

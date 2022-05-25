@@ -13,12 +13,15 @@ public interface HealthyFoodService {
 
     List<Ingredient> getAllIngredients();
     Ingredient getIngredientById(Long id);
+    Ingredient getIngredientByName(String dietName);
 
     List<Diet> getAllDiets();
     Diet getDietById(Long id);
+    Diet getDietByName(String dietName);
 
     List<Category> getAllCategories();
     Category getCategoryById(Long id);
+    Category getCategoryByName(String categoryName);
 
     List<Meal> getAllMeals();
     Meal getMealById(Long id);

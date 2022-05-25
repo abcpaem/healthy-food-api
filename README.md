@@ -33,7 +33,7 @@ The classes are designed in MVC pattern
 * Service will have interfaces to call the CRUD repository methods
 * Repository has the interfaces related to CRUD
 
-![img_1.png](docs/ControllerAndServices.png)
+![img.png](docs/ControllerAndServiceUML.png)
 
 ### Class Diagram for Model
 
@@ -66,8 +66,6 @@ Run the main application and then go to:
 - JSON: http://localhost:8080/v3/api-docs
 - User Interface: http://localhost:8080/swagger-ui/index.html
 
-## Future Considerations
-
 ### Pre-Requisites
 - Java SE Development Kit 11
 - Maven
@@ -75,6 +73,7 @@ Run the main application and then go to:
 ### Technologies & Dependencies
 - Spring Boot
 - Spring Web
+- -Spring Boot Actuator
 - Lombok
 - Spring Data JPA
 - Mokito

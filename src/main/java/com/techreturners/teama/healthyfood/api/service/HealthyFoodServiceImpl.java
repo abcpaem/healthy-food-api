@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class HealthyFoodServiceImpl implements HealthyFoodService {
@@ -17,13 +18,16 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
     private final int MAX_MEAL_FILTERED_RESULTS = 3;
 
     @Autowired
+    MealRepository mealRepository;
+
+    @Autowired
     IngredientRepository ingredientRepository;
+
     @Autowired
     DietRepository dietRepository;
+
     @Autowired
     CategoryRepository categoryRepository;
-    @Autowired
-    MealRepository mealRepository;
 
     @Override
     public List<Meal> getMeals(Integer calories, List<Long> excludedIngredients, List<Long> diets, List<Long> categories) {
@@ -43,7 +47,12 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     @Override
     public Ingredient getIngredientById(Long id) {
-        return null;
+        return ingredientRepository.findById(id).get();
+    }
+
+    @Override
+    public Ingredient getIngredientByName(String ingredientName){
+        return ingredientRepository.findByName(ingredientName);
     }
 
     @Override
@@ -55,7 +64,13 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     @Override
     public Diet getDietById(Long id) {
-        return null;
+        return dietRepository.findById(id).get();
+    }
+
+    @Override
+     public Diet getDietByName(String dietName){
+
+        return dietRepository.findByName(dietName);
     }
 
     @Override
@@ -67,7 +82,12 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     @Override
     public Category getCategoryById(Long id) {
-        return null;
+        return categoryRepository.findById(id).get();
+    }
+
+    @Override
+    public Category getCategoryByName(String categoryName){
+        return categoryRepository.findByName(categoryName);
     }
 
     @Override
@@ -79,6 +99,6 @@ public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     @Override
     public Meal getMealById(Long id) {
-        return null;
+        return mealRepository.findById(id).get();
     }
 }

@@ -69,8 +69,8 @@ public class HealthyFoodControllerTests {
     public void testGetAllDiets() throws Exception {
 
         List<Diet> diets = new ArrayList<>();
-        diets.add(new Diet(1L, "Diet1", "5,7", " "));
-        diets.add(new Diet(2L, "Diet2", "3,4", " "));
+        diets.add(new Diet(1L, "Diet1", " "));
+        diets.add(new Diet(2L, "Diet2", " "));
 
         when(healthyFoodManagerService.getAllDiets()).thenReturn(diets);
 

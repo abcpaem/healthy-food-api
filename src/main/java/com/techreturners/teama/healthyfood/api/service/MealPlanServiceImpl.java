@@ -1,7 +1,7 @@
 package com.techreturners.teama.healthyfood.api.service;
 
-import com.techreturners.teama.healthyfood.api.model.Ingredient;
 import com.techreturners.teama.healthyfood.api.model.MealPlan;
+import com.techreturners.teama.healthyfood.api.model.User;
 import com.techreturners.teama.healthyfood.api.repository.MealPlanRepository;
 import com.techreturners.teama.healthyfood.api.repository.MealRepository;
 import com.techreturners.teama.healthyfood.api.repository.UserRepository;
@@ -9,30 +9,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MealPlanServiceImpl implements MealPlanService {
 
     @Autowired
-    MealPlanRepository mealPlanRepository;
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
     MealRepository mealRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    MealPlanRepository mealPlanRepository;
+
     @Override
-    public List<MealPlan> getAllMealPlans(Long userId) {
+    public List<MealPlan> getAllMealPlans(Long userId){
         return mealPlanRepository.getAllMealPlans(userId);
     }
+    public MealPlan createMealPlan(Long mealid, Long userId, LocalDateTime date){
 
     @Override
     public List<MealPlan> createMealPlan(List<Long> meals, Long userId, LocalDateTime date) {
         List<MealPlan> mealPlansList = new ArrayList<>();
+        User user = userRepository.findById(userId).get();
         for (Long mealId : meals) {
             MealPlan mealPlan = new MealPlan();
-            mealPlan.setUser(userRepository.findById(userId).get());
+            mealPlan.setUser(user);
             mealPlan.setMeal(mealRepository.findById(mealId).get());
             mealPlan.setDate(date);
 
