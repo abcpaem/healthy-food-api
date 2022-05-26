@@ -27,23 +27,4 @@ public class Category {
 
     @Column
     String name;
-
-    @Column
-    String exclude;
-
-    @Column
-    LocalDate startdate;
-
-    @Column
-    LocalDate enddate;
-
-    @Column
-    LocalTime starttime;
-
-    @Column
-    LocalTime endtime;
-
-    @Column
-    String locale;
-
 }

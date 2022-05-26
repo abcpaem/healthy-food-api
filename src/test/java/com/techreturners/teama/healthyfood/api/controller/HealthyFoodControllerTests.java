@@ -86,8 +86,8 @@ public class HealthyFoodControllerTests {
     public void testGetAllCategories() throws Exception {
 
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category(1L, "Cat1", "10,12", LocalDate.now(), LocalDate.now().plusDays(5), LocalTime.now(), LocalTime.now().plusHours(15), Locale.UK.getCountry()));
-        categories.add(new Category(2L, "Cat2", "11,14", LocalDate.now(), LocalDate.now().plusDays(5), LocalTime.now(), LocalTime.now().plusHours(15), Locale.UK.getCountry()));
+        categories.add(new Category(1L, "Cat1"));
+        categories.add(new Category(2L, "Cat2"));
 
         when(healthyFoodManagerService.getAllCategories()).thenReturn(categories);
 
@@ -110,8 +110,8 @@ public class HealthyFoodControllerTests {
         List<Ingredient> ingredients = new ArrayList<>();
         List<Diet> diets = new ArrayList<>();
         List<Category> categories = new ArrayList<>();
-        meals.add(new Meal(1L, "Meal1", "ShortDesc1", "LongDesc1", categories, "Category1", 10, 10, 2000, ingredients, "1,3", diets, "Diet1", "Photo1", "Url1", LocalDateTime.now(), LocalTime.now(), LocalTime.now().plusHours(10)));
-        meals.add(new Meal(2L, "Meal2", "ShortDesc2", "LongDesc2", categories, "Category2", 20, 20, 1500, ingredients, "5,6", diets, "Diet2", "Photo2", "Url2", LocalDateTime.now(), LocalTime.now(), LocalTime.now().plusHours(10)));
+        meals.add(new Meal(1L, "Meal1", "ShortDesc1", "LongDesc1", categories, "Category1", 10, 10, 2000, ingredients, "1,3", diets, "Diet1", "Photo1", "Url1", LocalDateTime.now()));
+        meals.add(new Meal(2L, "Meal2", "ShortDesc2", "LongDesc2", categories, "Category2", 20, 20, 1500, ingredients, "5,6", diets, "Diet2", "Photo2", "Url2", LocalDateTime.now()));
 
         when(healthyFoodManagerService.getMeals(calories, excludedIngredientsLong, includedDietsLong, includedCategoriesLong)).thenReturn(meals);
 

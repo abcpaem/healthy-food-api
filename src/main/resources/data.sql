@@ -4,28 +4,28 @@ LIMIT 0, 1000
 
 -- Date: 2022-05-21 14:47
 */
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (1,'cereal',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (2,'breakfast',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (3,'lunch',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (4,'dinner',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (5,'gluten',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (6,'lactose',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (7,'hallal',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (9,'fruit',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (10,'starch',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (11,'dairy',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (12,'protein',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (13,'fat',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (14,'vegetable',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (15,'poultry',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (16,'eggs',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (17,'grain',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (18,'nuts',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (19,'legunes',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (20,'fish',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (21,'beverage',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (22,'oil',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO category (`id`,`name`,`exclude`,`startdate`,`enddate`,`starttime`,`endtime`,`locale`) VALUES (23,'fat',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO category (`id`,`name`) VALUES (1,'cereal');
+INSERT INTO category (`id`,`name`) VALUES (2,'breakfast');
+INSERT INTO category (`id`,`name`) VALUES (3,'lunch');
+INSERT INTO category (`id`,`name`) VALUES (4,'dinner');
+INSERT INTO category (`id`,`name`) VALUES (5,'gluten');
+INSERT INTO category (`id`,`name`) VALUES (6,'lactose');
+INSERT INTO category (`id`,`name`) VALUES (7,'hallal');
+INSERT INTO category (`id`,`name`) VALUES (9,'fruit');
+INSERT INTO category (`id`,`name`) VALUES (10,'starch');
+INSERT INTO category (`id`,`name`) VALUES (11,'dairy');
+INSERT INTO category (`id`,`name`) VALUES (12,'protein');
+INSERT INTO category (`id`,`name`) VALUES (13,'fat');
+INSERT INTO category (`id`,`name`) VALUES (14,'vegetable');
+INSERT INTO category (`id`,`name`) VALUES (15,'poultry');
+INSERT INTO category (`id`,`name`) VALUES (16,'eggs');
+INSERT INTO category (`id`,`name`) VALUES (17,'grain');
+INSERT INTO category (`id`,`name`) VALUES (18,'nuts');
+INSERT INTO category (`id`,`name`) VALUES (19,'legunes');
+INSERT INTO category (`id`,`name`) VALUES (20,'fish');
+INSERT INTO category (`id`,`name`) VALUES (21,'beverage');
+INSERT INTO category (`id`,`name`) VALUES (22,'oil');
+INSERT INTO category (`id`,`name`) VALUES (23,'fat');
 
 /*
 -- Query: SELECT id, name, CONVERT(exclude USING utf8) exclude, photo FROM healthyfoodapi_database.diet
@@ -270,10 +270,10 @@ LIMIT 0, 1000
 -- Date: 2022-05-21 15:09
 */
 
-INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`,`start`,`end`) VALUES (1,'Orecchiette','',NULL,NULL,45,2,500,'1,2,3,4,5,6,7,8','2,3,10','https://spoonacular.com/recipeImages/654009-556x370.jpg','https://spoonacular.com/orecchiette-with-sun-dried-and-fresh-cherry-tomatoes-654009','2022-05-17 14:56:56',NULL,NULL);
-INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`,`start`,`end`) VALUES (2,'Macaroni and Cheese','',NULL,NULL,50,4,1000,'17,18,19,20,21,9,14,12,22',NULL,'https://spoonacular.com/recipeImages/246078-556x370.jpg','https://www.simplyrecipes.com/recipes/civil_war_macaroni_and_cheese/','2022-05-17 15:08:53',NULL,NULL);
-INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`,`start`,`end`) VALUES (3,'Caribbean Grill','',NULL,NULL,33,4,2000,NULL,'1,2','https://spoonacular.com/recipeImages/294475-556x370.jpeg','http://www.foodnetwork.com/recipes/caribbean-grill-recipe.html','2022-05-17 15:08:53',NULL,NULL);
-INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`,`start`,`end`) VALUES (4,'Taco Pibil','',NULL,NULL,30,4,1500,NULL,'1,2','https://webknox.com/recipeImages/662744-556x370.jpg','https://foodnetwork.co.uk/recipes/all-american-beef-taco/','2022-05-17 15:08:53',NULL,NULL);
+INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`) VALUES (1,'Orecchiette','',NULL,NULL,45,2,500,'1,2,3,4,5,6,7,8','2,3,10','https://spoonacular.com/recipeImages/654009-556x370.jpg','https://spoonacular.com/orecchiette-with-sun-dried-and-fresh-cherry-tomatoes-654009','2022-05-17 14:56:56');
+INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`) VALUES (2,'Macaroni and Cheese','',NULL,NULL,50,4,1000,'17,18,19,20,21,9,14,12,22',NULL,'https://spoonacular.com/recipeImages/246078-556x370.jpg','https://www.simplyrecipes.com/recipes/civil_war_macaroni_and_cheese/','2022-05-17 15:08:53');
+INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`) VALUES (3,'Caribbean Grill','',NULL,NULL,33,4,2000,NULL,'1,2','https://spoonacular.com/recipeImages/294475-556x370.jpeg','http://www.foodnetwork.com/recipes/caribbean-grill-recipe.html','2022-05-17 15:08:53');
+INSERT INTO meal (`id`,`name`,`shortdesc`,`longdesc`,`category`,`preptime`,`servings`,`calories`,`ingredient`,`diet`,`photo`,`url`,`dateadded`) VALUES (4,'Taco Pibil','',NULL,NULL,30,4,1500,NULL,'1,2','https://webknox.com/recipeImages/662744-556x370.jpg','https://foodnetwork.co.uk/recipes/all-american-beef-taco/','2022-05-17 15:08:53');
 
 /*
 -- Query: SELECT id,email,firstname,lastname, CONVERT(dietid USING utf8) dietid, CONVERT(exclude USING utf8) exclude, dateadded FROM healthyfoodapi_database.user

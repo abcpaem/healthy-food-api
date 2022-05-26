@@ -81,10 +81,4 @@ public class Meal {
 
     @Column
     LocalDateTime dateadded;
-
-    @Column
-    LocalTime start;
-
-    @Column
-    LocalTime end;
 }
