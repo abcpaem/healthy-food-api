@@ -48,14 +48,19 @@ These classes make use of Lombok annotations and JPA
 
 ![img.png](docs/ClassModel.png)
 
-## Endpoints in Controller
-* **Get all ingredients :** localhost:8080/api/v1/ingredient
-* **Get all diet types :** localhost:8080/api/v1/diet
-* **Get all meal for the user:** localhost:8080/api/v1/meal
-  * Parameters : calories, String diet,String exclusions String category
-* **Get meal Plan for user :** localhost:8080/api/v1/mealPlans
-* **create meal plans for the user :** localhost:8080/api/v1/mealPlans
-  * Parameters : Long mealId, Long userId, LocalDateTime dateAdded
+## API Endpoints
+
+### For Healthy Food
+* **Get all ingredients :** http://localhost:8080/api/v1/ingredient
+* **Get all diet types :** http://localhost:8080/api/v1/diet
+* **Get all categories :** http://localhost:8080/api/v1/category
+* **Get all meals or with dietary restrictions:** http://localhost:8080/api/v1/meal
+  * Parameters : calories, ingredients to exclude, diets, category
+
+### For Meal Plan
+* **Get meal plans for user :** http://localhost:8080/api/v1/mealplan/{userId}
+* **Create meal plan for user :** http://localhost:8080/api/v1/mealplan/{userId}
+  * Parameters : meals, date
 
 ## API Documentation
 
