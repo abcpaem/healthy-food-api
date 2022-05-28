@@ -66,31 +66,32 @@ These classes make use of Lombok annotations and JPA
 
 The API documentation is automatically generated with Swagger (Open API), you can either view it as JSON or through the UI.
 
-Run the main application and then go to:
+Run the main application and go to:
 
-- JSON: http://localhost:8080/v3/api-docs
 - User Interface: http://localhost:8080/swagger-ui/index.html
-
-### Pre-Requisites
-- Java SE Development Kit 11
-- Maven
+- JSON: http://localhost:8080/v3/api-docs
 
 ### Technologies & Dependencies
-- Spring Boot
-- Spring Web
-- -Spring Boot Actuator
-- Lombok
-- Spring Data JPA
-- Mokito
+- Spring Boot 2.6.7
+- Spring Boot Starter Web
+- Spring Boot Starter Test
+- Spring Boot Starter Actuator
+- Spring Boot Starter Data JPA
+- Springdoc OpenAPI UI 1.6.8
+- Java 17.0.2
+- Maven 3.8.5
 - JUnit 5.8.2
-- Maven 4.0
-- MySql Database
-- Swagger
+- Lombok 1.18.24
+- Mockito 4.0
+- H2 Database 1.4.2
+- MySql Connector 8.0.28
+- Jackson Data Types JSR310 2.13.2
+- IntelliJ 2021.3.2 (Community Edition)
 
 ## How to run the application
   * cd to the project root folder in the command line
-  * mvn compile
-  * mvn exec:java -Dexec.mainClass=HealthyfoodApplication
+  * `mvn compile`
+  * `mvn exec:java -Dexec.mainClass=HealthyfoodApplication`
 
-## Running the Unit tests
-* mvn test
+To run tests use:
+- `mvn test`
