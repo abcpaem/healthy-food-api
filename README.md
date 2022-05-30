@@ -1,24 +1,26 @@
 # Healthy Food API
 Healthy Food API is designed to create a meal plan for a day based on dietary restrictions. 
-The objective of this application is to fetch different meals and let the user add the meals to meal planner.
-The meals are based on total amount of calories per day, the type of diet and list of ingredients user wants to exclude from his meals.
 
-* Example of Diet :  vegan, vegetarian, keto, Dairy-free, gluten-free etc
-* Example of Exclusion :  nuts, mushrooms, peanut, eggs, fish, shellfish etc
+The objective of this application is to provide the functionality to fetch different meals and then let the user create a meal plan based on those meals and a date.
+
+The meals can be filtered by the total amount of calories per day, the type of diets and the list of ingredients that the user wants to exclude from his meals.
+
+* Example of diets :  vegan, vegetarian, keto, Dairy-free, gluten-free etc.
+* Example of ingredients to exclude :  nuts, mushrooms, peanut, eggs, fish, shellfish etc.
 
 ## Research & Analysis
-We started with defining what our MVP will be. After doing the initial research ,we came up with the following features for our MVP :
+We started by defining what our MVP will be, after some brainstorming, we came up with the following features for our MVP:
 
-* Get list of ingredients to be used for exclusion list
-* Get list of diets (Gluten-free, Dairy-free, Vegetarian,...)
-* Get list of meals
-* Create meal plan based on meals IDs and a day
-* Get meal plan based on user id 
-* Decided to store all the data in the backend using MySql database.
-* Setup an AWS Database.
-* Using Trello for Scrum
-* Daily standup at 10 am
-* We will use pairing as well as individual tasks.
+* Get list of ingredients to be used for exclusion list.
+* Get list of diets.
+* Get list of meals.
+* Create meal plan based on meals IDs and a day.
+* Get meal plan based on user id.
+* Store the data using MySql database and H2 for testing.
+* Setup a MySQL database in AWS.
+* Using Trello for Kanban and Sprinting.
+* Daily stand-ups at 10am.
+* We will be pairing and also working in individual tasks.
 
 
 ### User-Case Diagram
@@ -28,16 +30,16 @@ This diagram shows the high-level functions and scope of our application.
 
 ### Class Diagram to exhibit the flow from Controller to Service and Repository
 
-The classes are designed in MVC pattern
+The classes are designed using the MVC pattern.
 * Controller will have classes related to endpoints. 
-* Service will have interfaces to call the CRUD repository methods
-* Repository has the interfaces related to CRUD
+* Service will have interfaces to call the CRUD repository methods.
+* Repository has the interfaces related to CRUD.
 
 ![img.png](docs/ControllerAndServiceUML.png)
 
 ### Class Diagram for Model
 
-These classes make use of Lombok annotations and JPA
+These classes make use of Lombok annotations and JPA.
 * The MealIngredientAs class will contain all the ingredients for a particular meal.
 * We query the MealIngredeientAs excluding the ingredients which matches the Exclusion list.
 * The list of Meal will be returned and further we filter it according to the category and diet.
