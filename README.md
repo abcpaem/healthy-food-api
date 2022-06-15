@@ -97,3 +97,18 @@ Run the main application and go to:
 
 To run tests use:
 - `mvn test`
+
+### Run as a Docker container
+
+* cd to the project root folder in the command line
+* `docker build -t healthy-food-api:1.0 .`
+* `docker run -p 8080:8080 healthy-food-api:1.0`
+* now you can go to: http://localhost:8080/swagger-ui/index.html
+
+To stop container:
+
+* press CTRL + C or
+* kill it from another command line by using:
+  * `docker ps` (to get the id of the running container)
+  * `docker stop <container id>`
+
