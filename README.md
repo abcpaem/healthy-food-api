@@ -73,7 +73,24 @@ Run the main application and go to:
 - User Interface: http://localhost:8080/swagger-ui/index.html
 - JSON: http://localhost:8080/v3/api-docs
 
-### Technologies & Dependencies
+## How to create the Production database
+
+If you Fork this project and would like to create your own database in Production (AWS), please follow these steps:
+
+1) Create a publicly accessible MySQL DB in AWS with your own user and password.
+2) Add a MySQL inbound security rule in the VPC where the AWS DB is running if you would like your local machine to access it.
+3) Update the following properties in the *application-prod.properties* file:
+   - user and password (password should be updated in your environment variable)
+   - datasource url
+4) Connect to MySQL AWS DB and run the following command:
+   - `create database healthyfood_database;`
+5) Add the following line in the *application-prod.properties* file:
+   - `spring.jpa.hibernate.ddl-auto=update`
+6) Generate the database schema by running the application.
+7) Add data to DB by running the *data.sql* scripts in the project resources folder.
+8) Remove the line added in step 5) to avoid any more automatic updates in Production.
+
+## Technologies & Dependencies
 - Spring Boot 2.6.7
 - Spring Boot Starter Web
 - Spring Boot Starter Test
