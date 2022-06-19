@@ -73,6 +73,12 @@ Run the main application and go to:
 - User Interface: http://localhost:8080/swagger-ui/index.html
 - JSON: http://localhost:8080/v3/api-docs
 
+##  Development Database
+
+For development, the H2 in-memory database is being used. Once the application is running in *dev* mode, the H2 db is initialised and its data is loaded using the *data.sql* file from the resources folder.
+
+In order to interact with the H2 database, you can use the following url: http://localhost:8080/h2-console
+
 ## How to create the Production database
 
 If you Fork this project and would like to create your own database in Production (AWS), please follow these steps:
