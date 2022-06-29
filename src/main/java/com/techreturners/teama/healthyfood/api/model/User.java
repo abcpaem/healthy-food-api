@@ -1,5 +1,6 @@
 package com.techreturners.teama.healthyfood.api.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,10 @@ public class User {
 
     @Column
     String email;
+
+    @Column
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    String password;
 
     @Column
     String firstname;

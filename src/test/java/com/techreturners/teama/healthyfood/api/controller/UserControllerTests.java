@@ -49,8 +49,8 @@ public class UserControllerTests {
     public void testGetAllUsers() throws Exception {
 
         List<User> users = new ArrayList<>();
-        users.add(new User(1L, "email@gmail.com", "firstName", "LastName", "1", "1", LocalDateTime.now()));
-        users.add(new User(2L, "email2@gmail.com", "firstName2", "LastName2", "2", "2", LocalDateTime.now()));
+        users.add(new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now()));
+        users.add(new User(2L, "email2@gmail.com", null, "firstName2", "LastName2", "2", "2", LocalDateTime.now()));
 
         when(mockUserServiceImpl.getAllUsers()).thenReturn(users);
 
@@ -65,7 +65,7 @@ public class UserControllerTests {
     @Test
     public void testGetUserById() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", "firstName", "LastName", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
 
         when(mockUserServiceImpl.getUserById(user.getId())).thenReturn(user);
 
@@ -96,7 +96,7 @@ public class UserControllerTests {
     @Test
     public void testAddUser() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", "firstName", "LastName", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
 
         when(mockUserServiceImpl.insertIntoUser(user)).thenReturn(user);
 
@@ -112,7 +112,7 @@ public class UserControllerTests {
     @Test
     public void testAddUserWhenIdAlreadyExists() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", "firstName", "LastName", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
 
         doThrow(IllegalArgumentException.class)
                 .when(mockUserServiceImpl)
@@ -130,7 +130,7 @@ public class UserControllerTests {
     @Test
     public void testUpdateUserById() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", "firstNameUpdated", "LastNameUpdated", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstNameUpdated", "LastNameUpdated", "1", "1", LocalDateTime.now());
 
         when(mockUserServiceImpl.getUserById(user.getId())).thenReturn(user);
 

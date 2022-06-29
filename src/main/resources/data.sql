@@ -281,7 +281,7 @@ LIMIT 0, 1000
 
 -- Date: 2022-05-21 15:13
 */
-INSERT INTO user (`id`,`email`,`firstname`,`lastname`,`dietid`,`exclude`,`dateadded`) VALUES (1,'test@mail.com','firstname','lastname','1','1','2022-05-17 16:55:43');
+INSERT INTO user (`id`,`email`,`password`,`firstname`,`lastname`,`dietid`,`exclude`,`dateadded`) VALUES (1,'test@mail.com','1000:5b42403633613933633762:768719c8d2ccba5ee138ab83763ae089aab6235c7b7ea4df6afca4b21b4a4fe5963e64aa6b6ec826813f4ca5dc198c27c3c5b4def37313ab63ed29b659f3caaf','firstname','lastname','1','1','2022-05-17 16:55:43');
 
 
 INSERT INTO meal_ingredient(`meal_id`, `ingredient_id`, `quantity`) VALUES (1,1,100);

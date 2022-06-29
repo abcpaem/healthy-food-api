@@ -1,10 +1,14 @@
 package com.techreturners.teama.healthyfood.api.service;
 
+import com.techreturners.teama.healthyfood.api.config.UserSecurity;
 import com.techreturners.teama.healthyfood.api.model.User;
 import com.techreturners.teama.healthyfood.api.repository.UserRepository;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +30,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).get();
     }
 
+    @SneakyThrows({NoSuchAlgorithmException.class, InvalidKeySpecException.class})
     @Override
     public User insertIntoUser(User user) {
         if (user.getId() != null && userRepository.existsById(user.getId()))
             throw new IllegalArgumentException();
+
+        user.setPassword(UserSecurity.generatePasswordHash(user.getPassword()));
         return userRepository.save(user);
     }
 
