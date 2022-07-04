@@ -11,9 +11,9 @@ public class UserSecurityTests {
     @Test
     void CheckValidatePasswordIsTrue() {
         String originalPassword = "password";
-        String generatedPasswordHash = UserSecurity.generatePasswordHash(originalPassword);
+        String generatedPasswordHash = UserSecurityConfig.generatePasswordHash(originalPassword);
 
-        boolean matched = UserSecurity.validatePassword(originalPassword, generatedPasswordHash);
+        boolean matched = UserSecurityConfig.validatePassword(originalPassword, generatedPasswordHash);
 
         assertTrue(matched);
     }
@@ -22,9 +22,9 @@ public class UserSecurityTests {
     @Test
     void CheckValidatePasswordIsFalse() {
         String originalPassword = "password";
-        String generatedPasswordHash = UserSecurity.generatePasswordHash(originalPassword);
+        String generatedPasswordHash = UserSecurityConfig.generatePasswordHash(originalPassword);
 
-        boolean matched = UserSecurity.validatePassword(originalPassword+"1", generatedPasswordHash);
+        boolean matched = UserSecurityConfig.validatePassword(originalPassword+"1", generatedPasswordHash);
 
         assertFalse(matched);
     }

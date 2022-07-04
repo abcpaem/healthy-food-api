@@ -1,5 +1,8 @@
 package com.techreturners.teama.healthyfood.api.config;
 
+import lombok.SneakyThrows;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
@@ -7,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
-public class UserSecurity {
+public class UserSecurityConfig implements PasswordEncoder {
 
     private static final int iterations = 1000;
     private static final int keyLength = 512;
@@ -73,5 +76,17 @@ public class UserSecurity {
                     16);
         }
         return bytes;
+    }
+
+    @SneakyThrows({NoSuchAlgorithmException.class, InvalidKeySpecException.class})
+    @Override
+    public String encode(CharSequence rawPassword) {
+        return generatePasswordHash(rawPassword.toString());
+    }
+
+    @SneakyThrows({NoSuchAlgorithmException.class, InvalidKeySpecException.class})
+    @Override
+    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+        return validatePassword(rawPassword.toString(), encodedPassword);
     }
 }

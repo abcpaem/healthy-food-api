@@ -1,6 +1,6 @@
 package com.techreturners.teama.healthyfood.api.service;
 
-import com.techreturners.teama.healthyfood.api.config.UserSecurity;
+import com.techreturners.teama.healthyfood.api.config.UserSecurityConfig;
 import com.techreturners.teama.healthyfood.api.model.User;
 import com.techreturners.teama.healthyfood.api.repository.UserRepository;
 import lombok.SneakyThrows;
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         if (user.getId() != null && userRepository.existsById(user.getId()))
             throw new IllegalArgumentException();
 
-        user.setPassword(UserSecurity.generatePasswordHash(user.getPassword()));
+        user.setPassword(UserSecurityConfig.generatePasswordHash(user.getPassword()));
         return userRepository.save(user);
     }
 
