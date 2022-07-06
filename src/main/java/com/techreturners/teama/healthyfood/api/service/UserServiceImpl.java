@@ -33,7 +33,8 @@ public class UserServiceImpl implements UserService {
     @SneakyThrows({NoSuchAlgorithmException.class, InvalidKeySpecException.class})
     @Override
     public User insertIntoUser(User user) {
-        if (user.getId() != null && userRepository.existsById(user.getId()))
+        if ((user.getId() != null && userRepository.existsById(user.getId()))
+                || userRepository.getUserByEmail(user.getEmail()).isPresent())
             throw new IllegalArgumentException();
 
         user.setPassword(UserSecurityConfig.generatePasswordHash(user.getPassword()));
