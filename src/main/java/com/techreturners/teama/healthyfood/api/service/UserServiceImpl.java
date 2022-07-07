@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -46,9 +47,16 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    @SneakyThrows({NoSuchAlgorithmException.class, InvalidKeySpecException.class})
     @Override
     public void updateUserById(Long id, User user) {
+        // Check if there is no other user with the same email
+        Optional<User> existingUser = userRepository.getUserByEmail(user.getEmail());
+        if (existingUser.isPresent() && existingUser.get().getId() != id)
+            throw new IllegalArgumentException();
+
         user.setId(id);
+        user.setPassword(UserSecurityConfig.generatePasswordHash(user.getPassword()));
         userRepository.save(user);
     }
 }

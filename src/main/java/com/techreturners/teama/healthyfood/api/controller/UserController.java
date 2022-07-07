@@ -61,7 +61,11 @@ public class UserController {
     @PutMapping({"/{userId}"})
     @Operation(summary = "Updates user by Id")
     public ResponseEntity<User> updateUserById(@PathVariable("userId") Long userId, @RequestBody User user) {
-        userService.updateUserById(userId, user);
+        try {
+            userService.updateUserById(userId, user);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(userService.getUserById(userId), HttpStatus.OK);
     }
 
