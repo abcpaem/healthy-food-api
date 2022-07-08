@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UserSecurityTests {
     @SneakyThrows
     @Test
-    void CheckValidatePasswordIsTrue() {
+    void checkValidatePasswordIsTrue() {
         String originalPassword = "password";
         String generatedPasswordHash = UserSecurityConfig.generatePasswordHash(originalPassword);
 
@@ -20,7 +20,7 @@ public class UserSecurityTests {
 
     @SneakyThrows
     @Test
-    void CheckValidatePasswordIsFalse() {
+    void checkValidatePasswordIsFalse() {
         String originalPassword = "password";
         String generatedPasswordHash = UserSecurityConfig.generatePasswordHash(originalPassword);
 

@@ -46,7 +46,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testGetAllUsers() throws Exception {
+    public void checkGetAllUsers() throws Exception {
 
         List<User> users = new ArrayList<>();
         users.add(new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now()));
@@ -63,7 +63,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testGetUserById() throws Exception {
+    public void checkGetUserById() throws Exception {
 
         User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
 
@@ -79,7 +79,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testGetUserByIdWhenUserDoesNotExistForThatID() throws Exception {
+    public void checkGetUserByIdWhenUserDoesNotExistForThatID() throws Exception {
         Long userId = 4L;
 
         doThrow(NoSuchElementException.class)
@@ -94,7 +94,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testAddUser() throws Exception {
+    public void checkAddUser() throws Exception {
 
         User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
 
@@ -110,7 +110,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testAddUserWhenIdAlreadyExists() throws Exception {
+    public void checkAddUserWhenIdAlreadyExists() throws Exception {
 
         User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
 
@@ -128,7 +128,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testUpdateUserById() throws Exception {
+    public void checkUpdateUserById() throws Exception {
 
         User user = new User(1L, "email@gmail.com", null, "firstNameUpdated", "LastNameUpdated", "1", "1", LocalDateTime.now());
 
@@ -146,7 +146,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testDeleteUserById() throws Exception {
+    public void checkDeleteUserById() throws Exception {
         Long userId = 4L;
 
         this.mockMvcController.perform(
@@ -158,7 +158,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testDeleteUserByIdWhenUserDoesNotExist() throws Exception {
+    public void checkDeleteUserByIdWhenUserDoesNotExist() throws Exception {
         Long userId = 4L;
 
         doThrow(EmptyResultDataAccessException.class)

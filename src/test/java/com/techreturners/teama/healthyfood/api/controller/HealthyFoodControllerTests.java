@@ -49,7 +49,7 @@ public class HealthyFoodControllerTests {
     }
 
     @Test
-    public void testGetAllIngredients() throws Exception {
+    public void checkGetAllIngredients() throws Exception {
 
         List<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(new Ingredient(1L, "Ingredient1", 100, 10, 10, 10, 10, "photo1", 1, 0, "1", "3,4", 5L));
@@ -66,7 +66,7 @@ public class HealthyFoodControllerTests {
     }
 
     @Test
-    public void testGetAllDiets() throws Exception {
+    public void checkGetAllDiets() throws Exception {
 
         List<Diet> diets = new ArrayList<>();
         diets.add(new Diet(1L, "Diet1", " "));
@@ -83,7 +83,7 @@ public class HealthyFoodControllerTests {
     }
 
     @Test
-    public void testGetAllCategories() throws Exception {
+    public void checkGetAllCategories() throws Exception {
 
         List<Category> categories = new ArrayList<>();
         categories.add(new Category(1L, "Cat1"));
@@ -100,7 +100,7 @@ public class HealthyFoodControllerTests {
     }
 
     @Test
-    public void testGetMeals() throws Exception {
+    public void checkGetMeals() throws Exception {
 
         int calories = 1000;
         List<Long> excludedIngredientsLong = Arrays.asList(1L, 2L);

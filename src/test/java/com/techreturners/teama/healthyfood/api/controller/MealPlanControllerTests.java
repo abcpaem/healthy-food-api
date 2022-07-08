@@ -46,7 +46,7 @@ public class MealPlanControllerTests {
     }
 
     @Test
-    public void testGetMealPlansByUser() throws Exception {
+    public void checkGetMealPlansByUser() throws Exception {
 
         Long userId = 1L;
         User user = new User();
@@ -66,7 +66,7 @@ public class MealPlanControllerTests {
     }
 
     @Test
-    public void testCreateMealPlanByUser() throws Exception {
+    public void checkCreateMealPlanByUser() throws Exception {
 
         List<Long> mealIds = Arrays.asList(1L);;
         Long userId = 1L;
