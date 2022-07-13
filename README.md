@@ -52,16 +52,18 @@ These classes make use of Lombok annotations and JPA.
 
 ## API Endpoints
 
+The project is currently configured in Dev to run on SSL under port 8443, so please make sure you follow the instructions in the section below in [How to create and use an SSL certificate locally](#how-to-create-and-use-an-ssl-certificate-locally). 
+
 ### For Healthy Food
-* **Get all ingredients :** http://localhost:8080/api/v1/ingredient
-* **Get all diet types :** http://localhost:8080/api/v1/diet
-* **Get all categories :** http://localhost:8080/api/v1/category
-* **Get all meals or with dietary restrictions:** http://localhost:8080/api/v1/meal
+* **Get all ingredients :** https://localhost:8443/api/v1/ingredient
+* **Get all diet types :** https://localhost:8443/api/v1/diet
+* **Get all categories :** https://localhost:8443/api/v1/category
+* **Get all meals or with dietary restrictions:** https://localhost:8443/api/v1/meal
   * Parameters : calories, ingredients to exclude, diets, category
 
 ### For Meal Plan
-* **Get meal plans for user :** http://localhost:8080/api/v1/mealplan/{userId}
-* **Create meal plan for user :** http://localhost:8080/api/v1/mealplan/{userId}
+* **Get meal plans for user :** https://localhost:8443/api/v1/mealplan/{userId}
+* **Create meal plan for user :** https://localhost:8443/api/v1/mealplan/{userId}
   * Parameters : meals, date
 
 ## API Documentation
@@ -70,14 +72,14 @@ The API documentation is automatically generated with Swagger (Open API), you ca
 
 Run the main application and go to:
 
-- User Interface: http://localhost:8080/swagger-ui/index.html
-- JSON: http://localhost:8080/v3/api-docs
+- User Interface: https://localhost:8443/swagger-ui/index.html
+- JSON: https://localhost:8443/v3/api-docs
 
 ##  Development Database
 
 For development, the H2 in-memory database is being used. Once the application is running in *dev* mode, the H2 db is initialised and its data is loaded using the *data.sql* file from the resources folder.
 
-In order to interact with the H2 database, you can use the following url: http://localhost:8080/h2-console
+In order to interact with the H2 database, you can use the following url: https://localhost:8443/h2-console
 
 ## How to create the Production database
 
@@ -95,6 +97,23 @@ If you Fork this project and would like to create your own database in Productio
 6) Generate the database schema by running the application.
 7) Add data to DB by running the *data.sql* scripts in the project resources folder.
 8) Remove the line added in step 5) to avoid any more automatic updates in Production.
+
+## How to create and use an SSL certificate locally
+
+For simplicity, *mkcert*  will be used for making locally-trusted development certificates. Github repo: https://github.com/FiloSottile/mkcert.
+
+The following instructions are for Windows command line:
+
+1) `choco install mkcert` to install mkcert.
+2) `mkcert -install` to create a new Certificate Authority (which name will start with mkcert).
+3) `mkcert -CAROOT` to know the location of the CA key and certificate (cd to that location).
+4) `mkcert localhost 127.0.0.1 ::1` to create the certificate and private key for localhost.
+5) `choco install openssl` to install openssl.
+6) `openssl pkcs12 -export -out localhost.p12 -in localhost+2.pem -inkey localhost+2-key.pem -passin pass:root -passout pass:root` to convert a PEM certificate to PFX/P12 format so Java can use it.
+7) copy your p12 file from step 6) to the *resources* folder.
+8) now you are ready to run the application under https://localhost:8443/, as all the ssl configuration was already added to the spring boot *dev* profile.
+
+**Note**: If you are using Postman for local testing, please make sure you add your CA certificate (PEM file) under File/Settings/Certificates.
 
 ## Technologies & Dependencies
 - Spring Boot 2.6.7
@@ -122,6 +141,8 @@ To run tests use:
 - `mvn test`
 
 ### Run as a Docker container
+
+The project is currently configured in Dev to run on SSL under port 8443, for the following instructions to work you will need to disable ssl in *application-dev.properties* and change server port to 8080.
 
 * cd to the project root folder in the command line
 * `docker build -t healthy-food-api:1.0 .`
