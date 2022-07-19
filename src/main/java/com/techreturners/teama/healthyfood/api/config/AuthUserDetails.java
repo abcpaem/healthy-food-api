@@ -18,7 +18,9 @@ public class AuthUserDetails implements UserDetails {
     public AuthUserDetails(User user) {
         this.userName = user.getEmail();
         this.password = user.getPassword();
-        this.authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")); // ToDo: Get roles from DB
+        this.authorities = Arrays.asList(
+                new SimpleGrantedAuthority("ROLE_ADMIN"),
+                new SimpleGrantedAuthority("ROLE_USER")); // ToDo: Get roles from DB
     }
 
     @Override

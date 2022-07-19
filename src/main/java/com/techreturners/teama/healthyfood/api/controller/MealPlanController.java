@@ -3,6 +3,7 @@ package com.techreturners.teama.healthyfood.api.controller;
 import com.techreturners.teama.healthyfood.api.service.MealPlanService;
 import com.techreturners.teama.healthyfood.api.model.MealPlan;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/mealplan")
 @Tag(name = "Meal Plan")
+@SecurityRequirement(name = "basicAuth")
 public class MealPlanController {
 
     @Autowired

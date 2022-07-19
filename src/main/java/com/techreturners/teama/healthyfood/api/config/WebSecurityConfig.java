@@ -38,8 +38,7 @@ public class WebSecurityConfig {
             "/api/v1/category",
             "/api/v1/ingredient",
             "/api/v1/diet",
-            "/api/v1/meal",
-            "/api/v1/mealplan/**"
+            "/api/v1/meal"
     };
 
     @Bean
@@ -47,6 +46,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((authz) -> authz
                         .antMatchers("/api/v1/user/**").hasRole("ADMIN")
+                        .antMatchers("/api/v1/mealplan/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .csrf().ignoringAntMatchers("/api/v1/**")
