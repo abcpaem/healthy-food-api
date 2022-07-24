@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-    @Query(value = "SELECT * FROM User where email = :email ", nativeQuery = true)
+    @Query(value = "SELECT u FROM User u JOIN FETCH u.roles where u.email = :email ")
     Optional<User> getUserByEmail(@Param(value = "email") String email);
 }

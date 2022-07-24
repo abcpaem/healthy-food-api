@@ -1,5 +1,6 @@
 package com.techreturners.teama.healthyfood.api.controller;
 
+import com.techreturners.teama.healthyfood.api.model.Role;
 import com.techreturners.teama.healthyfood.api.model.User;
 import com.techreturners.teama.healthyfood.api.service.UserServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +30,8 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 public class UserControllerTests {
 
+    private List<Role> userRoles = new ArrayList<>();
+
     @Mock
     private UserServiceImpl mockUserServiceImpl;
 
@@ -40,7 +43,7 @@ public class UserControllerTests {
     private ObjectMapper mapper;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         mockMvcController = MockMvcBuilders.standaloneSetup(userController).build();
         mapper = new ObjectMapper();
     }
@@ -49,8 +52,8 @@ public class UserControllerTests {
     public void checkGetAllUsers() throws Exception {
 
         List<User> users = new ArrayList<>();
-        users.add(new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now()));
-        users.add(new User(2L, "email2@gmail.com", null, "firstName2", "LastName2", "2", "2", LocalDateTime.now()));
+        users.add(new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now(), userRoles));
+        users.add(new User(2L, "email2@gmail.com", null, "firstName2", "LastName2", "2", "2", LocalDateTime.now(), userRoles));
 
         when(mockUserServiceImpl.getAllUsers()).thenReturn(users);
 
@@ -59,13 +62,14 @@ public class UserControllerTests {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].firstname").value("firstName2"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.*", hasSize(2)));;
+                .andExpect(MockMvcResultMatchers.jsonPath("$.*", hasSize(2)));
+        ;
     }
 
     @Test
     public void checkGetUserById() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now(), userRoles);
 
         when(mockUserServiceImpl.getUserById(user.getId())).thenReturn(user);
 
@@ -96,7 +100,7 @@ public class UserControllerTests {
     @Test
     public void checkAddUser() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now(), userRoles);
 
         when(mockUserServiceImpl.insertIntoUser(user)).thenReturn(user);
 
@@ -112,7 +116,7 @@ public class UserControllerTests {
     @Test
     public void checkAddUserWhenIdAlreadyExists() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstName", "LastName", "1", "1", LocalDateTime.now(), userRoles);
 
         doThrow(IllegalArgumentException.class)
                 .when(mockUserServiceImpl)
@@ -130,7 +134,7 @@ public class UserControllerTests {
     @Test
     public void checkUpdateUserById() throws Exception {
 
-        User user = new User(1L, "email@gmail.com", null, "firstNameUpdated", "LastNameUpdated", "1", "1", LocalDateTime.now());
+        User user = new User(1L, "email@gmail.com", null, "firstNameUpdated", "LastNameUpdated", "1", "1", LocalDateTime.now(), userRoles);
 
         when(mockUserServiceImpl.getUserById(user.getId())).thenReturn(user);
 
@@ -152,7 +156,7 @@ public class UserControllerTests {
         this.mockMvcController.perform(
                         MockMvcRequestBuilders.delete("/api/v1/user/" + userId))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(userId+""));
+                .andExpect(MockMvcResultMatchers.content().string(userId + ""));
 
         verify(mockUserServiceImpl, times(1)).deleteUserById(userId);
     }

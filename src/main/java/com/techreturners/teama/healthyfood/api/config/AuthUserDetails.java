@@ -5,7 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,9 +18,9 @@ public class AuthUserDetails implements UserDetails {
     public AuthUserDetails(User user) {
         this.userName = user.getEmail();
         this.password = user.getPassword();
-        this.authorities = Arrays.asList(
-                new SimpleGrantedAuthority("ROLE_ADMIN"),
-                new SimpleGrantedAuthority("ROLE_USER")); // ToDo: Get roles from DB
+        List<SimpleGrantedAuthority> userAuthorities = new ArrayList<>();
+        user.getRoles().forEach(role -> userAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName())));
+        this.authorities = userAuthorities;
     }
 
     @Override

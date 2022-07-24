@@ -46,7 +46,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((authz) -> authz
                         .antMatchers("/api/v1/user/**").hasRole("ADMIN")
-                        .antMatchers("/api/v1/mealplan/**").hasRole("USER")
+                        .antMatchers("/api/v1/mealplan/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
                 )
                 .csrf().ignoringAntMatchers("/api/v1/**")
