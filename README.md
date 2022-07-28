@@ -115,12 +115,25 @@ The following instructions are for Windows command line:
 
 **Note**: If you are using Postman for local testing, please make sure you add your CA certificate (PEM file) under File/Settings/Certificates.
 
+## Automatic Server Restart
+
+Spring Boot DevTools module has been added to the project to allow automatic server restart when there is a code change in the classpath while you are developing. This is quite useful because you don't need to rebuild and run the server manually every time there is change.
+
+In order for this feature to work in IntelliJ, the following settings need to be enabled:
+
+|  |  |
+| --- | --- |
+| ![img.png](docs/IntelliJAutomaticReloadSettings01.png) | ![img.png](docs/IntelliJAutomaticReloadSettings02.png) |
+
+There are more options that can be used from this module, if you want to learn more, please refer to: https://howtodoinjava.com/spring-boot/developer-tools-module-tutorial/
+
 ## Technologies & Dependencies
 - Spring Boot 2.6.7
 - Spring Boot Starter Web
 - Spring Boot Starter Test
 - Spring Boot Starter Actuator
 - Spring Boot Starter Data JPA
+- Spring Boot DevTools
 - Springdoc OpenAPI UI 1.6.8
 - Java 17.0.2
 - Maven 3.8.5
