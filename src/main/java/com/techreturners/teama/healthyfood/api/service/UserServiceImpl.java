@@ -3,8 +3,8 @@ package com.techreturners.teama.healthyfood.api.service;
 import com.techreturners.teama.healthyfood.api.config.UserSecurityConfig;
 import com.techreturners.teama.healthyfood.api.model.User;
 import com.techreturners.teama.healthyfood.api.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<User> getAllUsers() {

@@ -5,7 +5,7 @@ import com.techreturners.teama.healthyfood.api.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,13 +17,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/user")
 @Tag(name = "User")
 @SecurityRequirement(name = "basicAuth")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
     @GetMapping
     @Operation(summary = "Gets all users")

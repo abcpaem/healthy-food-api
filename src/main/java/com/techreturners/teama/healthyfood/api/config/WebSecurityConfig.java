@@ -1,6 +1,6 @@
 package com.techreturners.teama.healthyfood.api.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,10 +15,10 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
     private static final String[] AUTH_WHITELIST = {
             // -- Swagger UI v2

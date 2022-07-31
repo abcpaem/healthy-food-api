@@ -27,7 +27,6 @@ package "com.techreturners.teama.healthyfood.api" {
 
     Class HealthyFoodController{
 
-        @Autowired
         healthyFoodManagerService : HealthyFoodService;
         getAllIngredients() : ResponseEntity
         getAllDiets() : ResponseEntity
@@ -41,7 +40,6 @@ package "com.techreturners.teama.healthyfood.api" {
 
     }
     Class UserController{
-        @Autowired
         userService : UserService
 
         getUserById(userId:Long):ResponseEntity
@@ -62,7 +60,6 @@ package "com.techreturners.teama.healthyfood.api" {
             createMealPlan(mealid:Long, userId:Long, date:LocalDateTime) :MealPlan
     }
     Class HealthFoodServiceImpl {
-        @Autowired
         MealRepository mealRepository;
         UserRepository userRepository;
         MealPlanRepository mealPlanRepository;
@@ -74,7 +71,6 @@ package "com.techreturners.teama.healthyfood.api" {
     }
 
     Class MealPlanServiceImpl{
-        @Autowired
         mealRepository:MealRepository
         userRepository:UserRepository
         mealPlanRepository:MealPlanRepository
@@ -91,7 +87,6 @@ package "com.techreturners.teama.healthyfood.api" {
         updateUserById(id : Long) : void
     }
     Class UserServiceImpl{
-    @Autowired
         UserRepository userRepository;
 
         getAllUsers() : List<User>

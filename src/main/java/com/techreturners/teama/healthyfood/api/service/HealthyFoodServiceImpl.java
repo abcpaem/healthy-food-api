@@ -5,29 +5,21 @@ import com.techreturners.teama.healthyfood.api.repository.CategoryRepository;
 import com.techreturners.teama.healthyfood.api.repository.DietRepository;
 import com.techreturners.teama.healthyfood.api.repository.IngredientRepository;
 import com.techreturners.teama.healthyfood.api.repository.MealRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class HealthyFoodServiceImpl implements HealthyFoodService {
 
     private final int MAX_MEAL_FILTERED_RESULTS = 3;
-
-    @Autowired
-    MealRepository mealRepository;
-
-    @Autowired
-    IngredientRepository ingredientRepository;
-
-    @Autowired
-    DietRepository dietRepository;
-
-    @Autowired
-    CategoryRepository categoryRepository;
+    private final MealRepository mealRepository;
+    private final IngredientRepository ingredientRepository;
+    private final DietRepository dietRepository;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public List<Meal> getMeals(Integer calories, List<Long> excludedIngredients, List<Long> diets, List<Long> categories) {

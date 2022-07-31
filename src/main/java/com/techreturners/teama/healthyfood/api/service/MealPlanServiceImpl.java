@@ -5,7 +5,7 @@ import com.techreturners.teama.healthyfood.api.model.User;
 import com.techreturners.teama.healthyfood.api.repository.MealPlanRepository;
 import com.techreturners.teama.healthyfood.api.repository.MealRepository;
 import com.techreturners.teama.healthyfood.api.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,16 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MealPlanServiceImpl implements MealPlanService {
 
-    @Autowired
-    MealRepository mealRepository;
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    MealPlanRepository mealPlanRepository;
+    private final MealRepository mealRepository;
+    private final UserRepository userRepository;
+    private final MealPlanRepository mealPlanRepository;
 
     @Override
     public List<MealPlan> getAllMealPlans(Long userId){

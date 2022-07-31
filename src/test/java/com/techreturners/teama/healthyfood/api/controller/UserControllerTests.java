@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -31,16 +30,14 @@ import static org.mockito.Mockito.*;
 public class UserControllerTests {
 
     private List<Role> userRoles = new ArrayList<>();
+    private MockMvc mockMvcController;
+    private ObjectMapper mapper;
 
     @Mock
     private UserServiceImpl mockUserServiceImpl;
 
     @InjectMocks
     private UserController userController;
-
-    @Autowired
-    private MockMvc mockMvcController;
-    private ObjectMapper mapper;
 
     @BeforeEach
     public void setup() {

@@ -7,21 +7,20 @@ import com.techreturners.teama.healthyfood.api.model.Ingredient;
 import com.techreturners.teama.healthyfood.api.model.Meal;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1")
 @Tag(name = "Healthy Food")
 public class HealthyFoodController {
 
-    @Autowired
-    HealthyFoodService healthyFoodManagerService;
+    private final HealthyFoodService healthyFoodManagerService;
 
     @GetMapping({"/ingredient"})
     @Operation(summary = "Gets a list of all ingredients")

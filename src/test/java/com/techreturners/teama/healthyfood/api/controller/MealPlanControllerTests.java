@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
@@ -31,14 +30,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 public class MealPlanControllerTests {
 
+    private MockMvc mockMvcController;
+
     @Mock
     private MealPlanServiceImpl mockMealPlanServiceImpl;
 
     @InjectMocks
     private MealPlanController mealPlanController;
-
-    @Autowired
-    private MockMvc mockMvcController;
 
     @BeforeEach
     public void setup() {
